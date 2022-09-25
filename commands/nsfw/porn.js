@@ -6,11 +6,10 @@ const {
 } = require('discord.js')
 const config = require(`${process.cwd()}/botconfig/config.json`)
 var superagent = require('superagent');
-
 module.exports = {
-  name: "pussy",
+  name: "porn",
   category: "🔞 NSFW",
-  usage: "pussy",
+  usage: "porn",
   type: "real",
   run: async (client, message, args, cmduser, text, prefix) => {
 
@@ -28,15 +27,14 @@ module.exports = {
         embeds: [x]
       });
     }
-    if (!message.channel.nsfw) return message.reply(eval(client.la[ls]["cmds"]["nsfw"]["pussy"]["variable2"]))
+    if (!message.channel.nsfw) return message.reply(eval(client.la[ls]["cmds"]["nsfw"]["anal"]["variable2"]))
 
     superagent.get('https://nekobot.xyz/api/image').query({
-      type: 'pussy'
+      type: 'pgif'
     }).end((err, response) => {
       message.reply({
         content: `${response.body.message}`
       });
     });
-
   }
 };

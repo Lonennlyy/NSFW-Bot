@@ -1,17 +1,15 @@
 const client = require('nekos.life');
 const Discord = require('discord.js')
 const neko = new client();
-const {
-  MessageEmbed
-} = require('discord.js')
 const config = require(`${process.cwd()}/botconfig/config.json`)
-var superagent = require('superagent');
-
+const {
+  MessageEmbed, MessageAttachment
+} = require('discord.js')
 module.exports = {
-  name: "pussy",
+  name: "2dfeetgif",
   category: "🔞 NSFW",
-  usage: "pussy",
-  type: "real",
+  usage: "2dfeetgif",
+  type: "anime",
   run: async (client, message, args, cmduser, text, prefix) => {
 
     let es = client.settings.get(message.guild.id, "embed");
@@ -28,15 +26,8 @@ module.exports = {
         embeds: [x]
       });
     }
-    if (!message.channel.nsfw) return message.reply(eval(client.la[ls]["cmds"]["nsfw"]["pussy"]["variable2"]))
-
-    superagent.get('https://nekobot.xyz/api/image').query({
-      type: 'pussy'
-    }).end((err, response) => {
-      message.reply({
-        content: `${response.body.message}`
-      });
-    });
-
+    if (!message.channel.nsfw) return message.reply(eval(client.la[ls]["cmds"]["nsfw"]["2danal"]["variable1"])).then(msg => { message.react('💢'); msg.delete({ timeout: 3000 }) })
+    let owo = (await neko.nsfw.feetGif());
+    message.reply({content: `${owo.url}`});
   }
 };

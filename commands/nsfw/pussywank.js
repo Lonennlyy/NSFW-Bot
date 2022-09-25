@@ -5,13 +5,12 @@ const {
   MessageEmbed
 } = require('discord.js')
 const config = require(`${process.cwd()}/botconfig/config.json`)
-var superagent = require('superagent');
-
 module.exports = {
-  name: "pussy",
+  name: "pussywank",
   category: "🔞 NSFW",
-  usage: "pussy",
-  type: "real",
+  description: "Sends random pussywank",
+  usage: "pussywank",
+  type: "anime",
   run: async (client, message, args, cmduser, text, prefix) => {
 
     let es = client.settings.get(message.guild.id, "embed");
@@ -28,15 +27,10 @@ module.exports = {
         embeds: [x]
       });
     }
-    if (!message.channel.nsfw) return message.reply(eval(client.la[ls]["cmds"]["nsfw"]["pussy"]["variable2"]))
-
-    superagent.get('https://nekobot.xyz/api/image').query({
-      type: 'pussy'
-    }).end((err, response) => {
-      message.reply({
-        content: `${response.body.message}`
-      });
+    if (!message.channel.nsfw) return message.reply(eval(client.la[ls]["cmds"]["nsfw"]["anal"]["variable2"]))
+    let owo = (await neko.nsfw.pussyWankGif());
+    message.reply({
+      content: `${owo.url}`
     });
-
   }
 };
