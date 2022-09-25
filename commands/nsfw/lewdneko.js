@@ -1,17 +1,16 @@
-const superagent = require("node-fetch");
+const client = require('nekos.life');
 const Discord = require('discord.js')
-
-const rp = require('request-promise-native');
-const config = require(`${process.cwd()}/botconfig/config.json`)
+const neko = new client();
 const {
-  MessageEmbed, MessageAttachment
+  MessageEmbed
 } = require('discord.js')
+const config = require(`${process.cwd()}/botconfig/config.json`)
 module.exports = {
-  name: "boobs",
+  name: "lewdneko",
   category: "🔞 NSFW",
-  description: "Sends boobs",
-  usage: "boobs",
-  type: "real",
+  description: "Sends random nsfw neko",
+  usage: "lewdneko",
+  type: "anime",
   run: async (client, message, args, cmduser, text, prefix) => {
 
     let es = client.settings.get(message.guild.id, "embed");
@@ -29,16 +28,11 @@ module.exports = {
       });
     }
     if (!message.channel.nsfw) return message.reply(eval(client.la[ls]["cmds"]["nsfw"]["anal"]["variable2"]))
-    return rp.get('http://api.oboobs.ru/boobs/0/1/random').then(JSON.parse).then(function (res) {
-      return rp.get({
-        url: 'http://media.oboobs.ru/' + res[0].preview,
-        encoding: null
-      });
-    }).then(function (res) {
-      let attachment = new MessageAttachment(res, "file.png");
-      message.reply({
-        files: [attachment]
-      });
+
+    let owo = (await neko.nsfw.neko());
+
+    message.reply({
+      content: `${owo.url}`
     });
   }
 };
